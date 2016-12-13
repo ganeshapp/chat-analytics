@@ -57,3 +57,9 @@ TotalSentiment <- data.frame(colSums(text[,c(2:11)]))
 names(TotalSentiment) <- "count"
 TotalSentiment <- cbind("sentiment" = rownames(TotalSentiment), TotalSentiment)
 rownames(TotalSentiment) <- NULL
+
+#total sentiment score of all texts
+ggplot(data = TotalSentiment, aes(x = sentiment, y = count)) +
+  geom_bar(aes(fill = sentiment), stat = "identity") +
+  theme(legend.position = "none") +
+  xlab("Sentiment") + ylab("Total Count") + ggtitle("Total Sentiment Score")
